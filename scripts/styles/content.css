@@ -1,0 +1,82 @@
+.smooth-transition {
+  transition: all 0.3s ease;
+}
+.loadingMessage {
+  padding: 15px;
+  font-size: 15px;
+}
+.closeButton {
+  right: 30px;
+  position: fixed;
+  border-radius: 5px;
+}
+.postsContainer {
+  display: block;
+  order: -2;
+}
+.container {
+  display: flex;
+  flex-direction: row;
+}
+.commentsContainer {
+  right: 5px;
+  position: fixed;
+  bottom: 5px;
+  background-color: rgb(15, 15, 15);
+  display: none;
+  border-radius: 5px;
+  z-index: 2;
+}
+.rcb-handle {
+  width: 10px;
+  position: fixed;
+  bottom: 5px;
+  display: none;
+  z-index: 3;
+}
+.rcb-handle:hover {
+  cursor: ew-resize;
+}
+.white {
+  background-color: rgb(24, 24, 24);
+}
+.black {
+  background-color: rgb(15, 15, 15);
+}
+.activeCommentButton {
+  color: white !important;
+}
+.activePost {
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgb(100, 100, 100);
+  border-radius: 5px;
+  background-color: rgb(48, 48, 48) !important;
+}
+.bufferedPost:not(.activePost) {
+  border-style: solid;
+  border-width: 0.5px;
+  border-color: rgb(100, 100, 100);
+  border-radius: 5px;
+}
+.paddingStyle {
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+.individualComment {
+  padding: 5px;
+  margin: 5px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgb(48, 48, 48);
+  border-radius: 5px;
+}
+
+.no-select {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
