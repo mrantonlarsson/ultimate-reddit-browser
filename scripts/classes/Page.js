@@ -174,7 +174,7 @@ export const Page = {
         if (post.element.contains(target)) {
           if (post.expandoToggle == false) {
             this.uiManager.scrollToPost(post);
-            post.onCommentsButtonHover(0);
+            post.onCommentsButtonHover(0, true);
             post.expandoToggle = true;
           } else if (post.expandoToggle == true) {
             post.expandoToggle = false;

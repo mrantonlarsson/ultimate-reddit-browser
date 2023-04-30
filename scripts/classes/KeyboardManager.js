@@ -90,7 +90,7 @@ export class KeyboardManager {
       }
     } else {
       this.page.uiManager.scrollToPost(currentPost);
-      currentPost.onCommentsButtonHover();
+      currentPost.onCommentsButtonHover(0, true);
     }
 
     this.page.lastPost = currentPost;

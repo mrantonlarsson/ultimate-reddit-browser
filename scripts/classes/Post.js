@@ -32,7 +32,7 @@ export class Post {
     if (this.commentButton) {
       this.commentButton.addEventListener("mouseenter", (event) => {
         if (this.commentButton !== null) {
-          this.onCommentsButtonHover(300);
+          this.onCommentsButtonHover(300, true);
         }
       });
     }
@@ -53,7 +53,7 @@ export class Post {
     this.isSelected = false;
   }
 
-  onCommentsButtonHover(timeout) {
+  onCommentsButtonHover(timeout, displayComments) {
     // If this comment is already opened
     if (this.page.lastPost == this.element) {
       return;
@@ -69,8 +69,13 @@ export class Post {
       this.page.uiManager.toggleCommentsContainer(true);
       this.displayPost();
       this.page.currentPost = this.element;
-      this.page.uiManager.displayLoadingMessage();
-      await this.commentsManager.getCommentsPage("", true);
+      this.page.commentsWrapper.innerHTML = "";
+      this.page.commentsWrapper.appendChild(this.page.loadingMessage);
+      await this.commentsManager.getCommentsPage("").then(() => {
+        if (displayComments == true) {
+          this.commentsManager.displayComments();
+        }
+      });
 
       this.page.lastPost = this;
 

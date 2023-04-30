@@ -22,12 +22,9 @@ export class CommentsManager {
     }
   }
 
-  async getCommentsPage(options = "", shouldDisplay = false) {
+  async getCommentsPage(options = "") {
     if (this.post.commentButton) {
-      if (!this.commentsElement || options) {
-        this.post.page.commentsWrapper.innerHTML = "";
-        this.post.page.commentsWrapper.appendChild(this.post.page.loadingMessage);
-
+      if (!this.commentsElement || options != "") {
         return new Promise((resolve, reject) => {
           // Create a new XMLHttpRequest object
           const xhr = new XMLHttpRequest();
@@ -67,14 +64,14 @@ export class CommentsManager {
                 event.preventDefault(); // prevent the default action
                 const url = new URL(choice.getAttribute("href"));
                 const sortOption = url.search; // get the query string
-                await this.getCommentsPage(sortOption, true); // Note the await keyword
+                this.post.page.commentsWrapper.innerHTML = "";
+                this.post.page.commentsWrapper.appendChild(this.post.page.loadingMessage);
+                await this.getCommentsPage(sortOption, true).then(() => {
+                  this.displayComments();
+                }); // Note the await keyword
               });
             });
-
-            if (shouldDisplay) {
-              this.displayComments(); // Only display immediately if shouldDisplay is true
-            }
-            resolve();
+            resolve(); // Resolve the promise here
           });
 
           // Open the request to the comments URL
@@ -83,8 +80,7 @@ export class CommentsManager {
           // Send the request
           xhr.send();
         });
-      } else if (shouldDisplay) {
-        this.displayComments();
+      } else {
         return Promise.resolve();
       }
     }
