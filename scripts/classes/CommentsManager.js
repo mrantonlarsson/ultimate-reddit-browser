@@ -5,6 +5,7 @@ export class CommentsManager {
     this.post = post;
     this.commentsElement = null;
     this.comments = [];
+    this.dropChoices = null;
   }
 
   unselectAllComments() {
@@ -21,9 +22,10 @@ export class CommentsManager {
     }
   }
 
-  async getCommentsPage(options = "") {
+  async getCommentsPage(options = "", shouldDisplay = false) {
     if (this.post.commentButton) {
-      if (this?.commentsElement == null) {
+      if (!this.commentsElement || options) {
+        this.post.page.commentsWrapper.innerHTML = "";
         this.post.page.commentsWrapper.appendChild(this.post.page.loadingMessage);
 
         return new Promise((resolve, reject) => {
@@ -33,11 +35,6 @@ export class CommentsManager {
           xhr.addEventListener("load", () => {
             // Parse the response text as HTML
             const doc = new DOMParser().parseFromString(xhr.responseText, "text/html");
-
-            // Remove the loading message if it is a child of commentsWrapper
-            if (this.post.page.commentsWrapper.contains(this.post.page.loadingMessage)) {
-              this.post.page.commentsWrapper.removeChild(this.post.page.loadingMessage);
-            }
 
             if (this.post.page.uiManager.oldReddit) {
               this.commentsElement = doc.querySelector(".commentarea");
@@ -50,13 +47,34 @@ export class CommentsManager {
                 `.${this.post.element.classList[0]}`
               ).parentElement.lastChild;
             }
-            resolve();
             this.post.element.classList.add("bufferedPost");
+
             const commentsElement = doc.querySelector(".sitetable.nestedlisting");
+
             const topLevelChildren = Array.from(commentsElement.children);
             this.comments = topLevelChildren
               .filter((child) => child.classList.contains("thing"))
               .map((child, index) => new Comment(index, child));
+
+            const dropChoicesElement = this.commentsElement.querySelector(".drop-choices");
+            if (dropChoicesElement) {
+              this.dropChoices = Array.from(dropChoicesElement.children);
+            } else {
+              this.dropChoices = [];
+            }
+            this.dropChoices.forEach((choice) => {
+              choice.addEventListener("click", async (event) => {
+                event.preventDefault(); // prevent the default action
+                const url = new URL(choice.getAttribute("href"));
+                const sortOption = url.search; // get the query string
+                await this.getCommentsPage(sortOption, true); // Note the await keyword
+              });
+            });
+
+            if (shouldDisplay) {
+              this.displayComments(); // Only display immediately if shouldDisplay is true
+            }
+            resolve();
           });
 
           // Open the request to the comments URL
@@ -65,7 +83,8 @@ export class CommentsManager {
           // Send the request
           xhr.send();
         });
-      } else {
+      } else if (shouldDisplay) {
+        this.displayComments();
         return Promise.resolve();
       }
     }

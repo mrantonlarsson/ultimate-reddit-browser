@@ -70,11 +70,7 @@ export class Post {
       this.displayPost();
       this.page.currentPost = this.element;
       this.page.uiManager.displayLoadingMessage();
-      await this.commentsManager.getCommentsPage().then(() => {
-        if (this.commentsManager.commentsElement) {
-          this.commentsManager.displayComments();
-        }
-      });
+      await this.commentsManager.getCommentsPage("", true);
 
       this.page.lastPost = this;
 

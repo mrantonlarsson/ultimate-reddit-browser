@@ -104,7 +104,7 @@ export class KeyboardManager {
     if (this.currentCommentIndex > 1) {
       this.currentCommentIndex--;
       this.updateSelectedComment();
-      commentThread[this.currentCommentIndex - 1].toggleExpandComment();
+      // commentThread[this.currentCommentIndex - 1].toggleExpandComment();
       this.page.uiManager.scrollToComment(commentThread[this.currentCommentIndex - 1]);
     }
   }
@@ -118,7 +118,7 @@ export class KeyboardManager {
       if (this.currentCommentIndex == 0) {
         this.page.uiManager.scrollToComment(commentThread[this.currentCommentIndex]);
       } else {
-        commentThread[this.currentCommentIndex - 1].toggleExpandComment();
+        // commentThread[this.currentCommentIndex - 1].toggleExpandComment();
         this.page.uiManager.scrollToComment(commentThread[this.currentCommentIndex]);
       }
       this.currentCommentIndex++;

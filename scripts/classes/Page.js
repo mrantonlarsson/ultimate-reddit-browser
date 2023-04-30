@@ -101,11 +101,13 @@ export const Page = {
         this.uiManager.ratio = event.clientX / window.innerWidth;
         this.uiManager.updateContainerWidths();
         // Get the .res-media-zoomable element
-        const mediaZoomable = this.currentPost.querySelector(".res-media-zoomable");
-        let parentWidth = this.currentPost.querySelector(".res-expando-box").offsetWidth;
-        // Apply the style if the element exists
-        if (mediaZoomable) {
-          mediaZoomable.style.maxWidth = `${parentWidth}px`;
+        if (this.currentPost.querySelector(".res-expando-box")) {
+          const mediaZoomable = this.currentPost.querySelector(".res-media-zoomable");
+          let parentWidth = this.currentPost.querySelector(".res-expando-box").offsetWidth;
+          // Apply the style if the element exists
+          if (mediaZoomable) {
+            mediaZoomable.style.maxWidth = `${parentWidth}px`;
+          }
         }
       }
     });
@@ -158,11 +160,12 @@ export const Page = {
     }
 
     for (let i = startIndex; i < endIndex; i++) {
-      if (!this.posts[i].commentsManager.commentElement) {
+      if (!this.posts[i].commentsManager.commentsElement) {
         this.posts[i].commentsManager.getCommentsPage();
       }
     }
   },
+
   handleExpandoButtonClick: function (event) {
     const target = event.target;
     if (target.classList.contains("expando-button")) {
