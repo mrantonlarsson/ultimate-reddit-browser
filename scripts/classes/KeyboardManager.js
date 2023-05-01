@@ -101,7 +101,10 @@ export class KeyboardManager {
     const currentPost = this.page.posts.find((post) => post.id === this.currentPostId);
     const commentThread = currentPost.commentsManager.comments;
 
-    if (this.currentCommentIndex > 1) {
+    if (this.currentCommentIndex === 1) {
+      this.currentCommentIndex--;
+      this.page.commentsWrapper.scrollTo({ top: top, behavior: "smooth" });
+    } else if (this.currentCommentIndex > 0) {
       this.currentCommentIndex--;
       this.updateSelectedComment();
       // commentThread[this.currentCommentIndex - 1].toggleExpandComment();
@@ -125,7 +128,7 @@ export class KeyboardManager {
     }
   }
 
-  updateSelectedComment(currentCommentIndex) {
+  updateSelectedComment() {
     if (this.currentCommentIndex >= 0) {
       const currentPost = this.page.posts.find((post) => post.id === this.currentPostId);
       const commentThread = currentPost.commentsManager;
