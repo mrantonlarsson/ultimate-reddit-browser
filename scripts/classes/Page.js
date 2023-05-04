@@ -84,7 +84,7 @@ export const Page = {
         // Apply the style if the element exists
         if (mediaZoomable) {
           // Calculate the remaining space in the viewport
-          let remainingSpace = window.innerHeight - mediaZoomable.getBoundingClientRect().top;
+          let remainingSpace = window.innerHeight - 50 - mediaZoomable.getBoundingClientRect().top;
           // Set the maximum height to the remaining space in the viewport
 
           remainingSpace = Math.min(750, remainingSpace);

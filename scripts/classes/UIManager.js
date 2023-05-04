@@ -23,13 +23,14 @@ export class UIManager {
     this.page.commentsContainer.classList.add("commentsContainer");
     this.page.handle.classList.add("rcb-handle");
     this.page.handle.classList.add("smooth-transition");
+    this.page.commentsWrapper.classList.add("commentsWrapper");
+    this.page.postWrapper.classList.add("postWrapper");
 
     //this.page.handle.style.height = this.page.commentsContainer.style.height;
     //console.log(this.page.commentsContainer.style.height);
     this.page.handle.style.borderRadius = "5px";
 
     this.page.commentsContainer.appendChild(this.page.closeButton);
-    this.page.commentsContainer.style.padding = "5px";
 
     this.page.commentsContainer.style.display = "none";
     this.page.handle.style.display = "none";
@@ -41,13 +42,18 @@ export class UIManager {
     // Set containerPostComments styles
     this.page.commentsContainer.style.flexDirection = "column";
 
-    this.page.commentsWrapper.style.overflowY = "scroll";
-    this.page.commentsWrapper.style.height = "100%";
-    this.page.commentsWrapper.style.border = "solid";
-    this.page.commentsWrapper.style.borderColor = "rgb(48, 48, 48)";
-    this.page.commentsWrapper.style.borderRadius = "5px";
-
     this.placeElements();
+
+    // document.getElementById('themeSwitcher').addEventListener('click', function() {
+    //   const body = document.body;
+    //   if(body.classList.contains('dark')) {
+    //     body.classList.remove('dark');
+    document.body.classList.add("dark");
+    //   } else {
+    //     body.classList.remove('light');
+    //     body.classList.add('dark');
+    //   }
+    // });
   }
 
   placeElements() {
@@ -195,11 +201,7 @@ export class UIManager {
     if (postCopy.querySelector(".expando-button")) {
       postCopy.querySelector(".expando-button").remove();
     }
-    postCopy.style.backgroundColor = "black";
-    postCopy.style.border = "solid";
-    postCopy.style.borderColor = "rgb(48, 48, 48)";
-    postCopy.style.borderRadius = "5px";
-    postCopy.style.padding = "8px";
+    postCopy.classList.add("postCopy");
   }
 
   displayLoadingMessage() {
@@ -232,18 +234,10 @@ export class UIManager {
   }
 
   setStyles() {
-    const css = `.commentsContainer {
-                  top: ${70 - window.scrollY}px;
-                  }
-                  .rcb-handle {
-                    top: ${70 - window.scrollY}px;
-                    }
-                    
-                  .closeButton {
-                    top: ${80 - window.scrollY}px
-                  }`;
-    const style = document.createElement("style");
-    style.appendChild(document.createTextNode(css));
-    document.head.appendChild(style);
+    const containerTop = this.page.container.getBoundingClientRect().top;
+
+    this.page.commentsContainer.style.top = `${containerTop}px`;
+    this.page.handle.style.top = `${containerTop}px`;
+    this.page.closeButton.style.top = `${containerTop + 10}px`;
   }
 }

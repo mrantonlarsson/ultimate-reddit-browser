@@ -1,3 +1,37 @@
+:root {
+  --primary-dark-color: rgb(38, 38, 38);
+  --primary-dark-border-color: rgb(51, 51, 51);
+  --secondary-dark-color: rgb(22, 22, 22);
+  --secondary-dark-border-color: rgb(51, 51, 51);
+  --tertiary-dark-color: rgb(18, 18, 18);
+  --tertiary-dark-border-color: rgb(51, 51, 51);
+
+  --primary-light-color: rgb(253, 253, 255);
+  --primary-light-border-color: rgb(230, 230, 230);
+  --secondary-light-color: rgb(253, 253, 255);
+  --secondary-light-border-color: rgb(230, 230, 230);
+  --tertiary-light-color: rgb(247, 247, 248);
+  --tertiary-light-border-color: rgb(230, 230, 230);
+}
+
+body.dark {
+  --primary-color: var(--primary-dark-color);
+  --primary-border-color: var(--primary-dark-border-color);
+  --secondary-color: var(--secondary-dark-color);
+  --secondary-border-color: var(--secondary-dark-border-color);
+  --tertiary-color: var(--tertiary-dark-color);
+  --tertiary-border-color: var(--tertiary-dark-border-color);
+}
+
+body.light {
+  --primary-color: var(--primary-light-color);
+  --primary-border-color: var(--primary-light-border-color);
+  --secondary-color: var(--secondary-light-color);
+  --secondary-border-color: var(--secondary-light-border-color);
+  --tertiary-color: var(--tertiary-light-color);
+  --tertiary-border-color: var(--tertiary-light-border-color);
+}
+
 .smooth-transition {
   transition: all 0.3s ease;
 }
@@ -18,15 +52,20 @@
   display: flex;
   flex-direction: row;
 }
+
 .commentsContainer {
-  right: 5px;
+  right: 0;
   position: fixed;
-  bottom: 5px;
-  background-color: rgb(15, 15, 15);
+  bottom: 0;
+  /* background-color: var(--secondary-color); */
   display: none;
-  border-radius: 5px;
+  /* border-radius: 5px; */
   z-index: 2;
+
+  /* border: solid; */
+  /* border-color: var(--secondary-border-color); */
 }
+
 .rcb-handle {
   width: 10px;
   position: fixed;
@@ -37,39 +76,71 @@
 .rcb-handle:hover {
   cursor: ew-resize;
 }
+
 .white {
-  background-color: rgb(24, 24, 24);
+  background-color: var(--tertiary-color);
 }
 .black {
-  background-color: rgb(15, 15, 15);
+  background-color: var(--secondary-color);
 }
+
 .activeCommentButton {
   color: white !important;
 }
+
 .activePost {
   border-style: solid;
   border-width: 1px;
-  border-color: rgb(100, 100, 100);
+  border-color: var(--tertiary-border-color);
   border-radius: 5px;
-  background-color: rgb(48, 48, 48) !important;
+  background-color: var(--tertiary-color) !important;
 }
+
 .bufferedPost:not(.activePost) {
   border-style: solid;
   border-width: 0.5px;
-  border-color: rgb(100, 100, 100);
+  border-color: var(--secondary-border-color);
   border-radius: 5px;
 }
+
 .paddingStyle {
   padding-top: 3px;
   padding-bottom: 3px;
 }
+
 .individualComment {
   padding: 5px;
   margin: 5px;
   border-style: solid;
   border-width: 1px;
-  border-color: rgb(48, 48, 48);
+  border-color: var(--secondary-border-color);
   border-radius: 5px;
+}
+
+.commentsWrapper {
+  overflow-y: scroll;
+  height: 100%;
+  border: solid;
+  background-color: var(--primary-color);
+  border-color: var(--primary-border-color);
+  border-radius: 5px;
+}
+
+.postWrapper {
+  border-color: var(--primary-border-color) !important;
+  border: solid;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.postCopy {
+  background-color: var(--tertiary-color) !important;
+  border: solid;
+  border-color: var(--tertiary-border-color);
+  border-radius: 5px;
+  padding: 8px;
+  margin-bottom: 0px !important;
 }
 
 .no-select {

@@ -3,6 +3,7 @@ export class KeyboardManager {
     this.page = page;
     this.currentPostId = this.page.posts.length > 0 ? this.page.posts[0].id : null;
     this.currentCommentIndex = 0;
+    this.currentPostIndex = 0;
     this.setup();
   }
 
@@ -60,10 +61,6 @@ export class KeyboardManager {
     if (currentPostIndex < this.page.posts.length - 1) {
       this.currentPostId = this.page.posts[currentPostIndex + 1].id;
       this.updateSelectedPost();
-    } else if (currentPostIndex === this.page.posts.length - 1) {
-      // Select the first post when you're at the last post
-      this.currentPostId = this.page.posts[0].id;
-      this.updateSelectedPost();
     }
   }
 
@@ -87,6 +84,7 @@ export class KeyboardManager {
       if (currentPost.expandoToggle == false) {
         currentPostExpandoButton.click();
         currentPost.expandoToggle = true;
+        this.page.uiManager.toggleActivePost(currentPost);
       }
     } else {
       this.page.uiManager.scrollToPost(currentPost);
