@@ -47,6 +47,7 @@ export const Page = {
     this.observePosts();
     this.observeComments();
     this.observeRESMedia();
+    this.observeRedditTheme();
 
     // Attach a mouse down event listener to the handle div
     this.handle.addEventListener("mousedown", (event) => {
@@ -255,6 +256,7 @@ export const Page = {
       subtree: true,
     });
   },
+
   observeRESMedia: function () {
     const observer = new MutationObserver((mutations) => {
       mutations.forEach((mutation) => {
@@ -273,6 +275,26 @@ export const Page = {
     observer.observe(document.body, {
       childList: true,
       subtree: true,
+    });
+  },
+
+  observeRedditTheme: function () {
+    const observer = new MutationObserver((mutations) => {
+      for (const mutation of mutations) {
+        if (mutation.type === "attributes" && mutation.attributeName === "class") {
+          this.uiManager.detectAndApplyTheme();
+        }
+      }
+    });
+
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+
+    observer.observe(document.body, {
+      attributes: true,
+      attributeFilter: ["class"],
     });
   },
 };

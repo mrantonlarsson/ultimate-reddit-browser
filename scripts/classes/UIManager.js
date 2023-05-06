@@ -43,17 +43,6 @@ export class UIManager {
     this.page.commentsContainer.style.flexDirection = "column";
 
     this.placeElements();
-
-    // document.getElementById('themeSwitcher').addEventListener('click', function() {
-    //   const body = document.body;
-    //   if(body.classList.contains('dark')) {
-    //     body.classList.remove('dark');
-    document.body.classList.add("dark");
-    //   } else {
-    //     body.classList.remove('light');
-    //     body.classList.add('dark');
-    //   }
-    // });
   }
 
   placeElements() {
@@ -239,5 +228,24 @@ export class UIManager {
     this.page.commentsContainer.style.top = `${containerTop}px`;
     this.page.handle.style.top = `${containerTop}px`;
     this.page.closeButton.style.top = `${containerTop + 10}px`;
+  }
+
+  detectAndApplyTheme() {
+    const darkThemeClass = "res-nightmode";
+
+    const isDarkTheme =
+      document.documentElement.classList.contains(darkThemeClass) ||
+      document.body.classList.contains(darkThemeClass);
+
+    if (isDarkTheme) {
+      this.applyTheme(true);
+    } else {
+      this.applyTheme(false);
+    }
+  }
+
+  applyTheme(darkTheme) {
+    document.body.classList.toggle("dark", darkTheme);
+    document.body.classList.toggle("light", !darkTheme);
   }
 }

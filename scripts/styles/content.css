@@ -124,6 +124,7 @@ body.light {
   background-color: var(--primary-color);
   border-color: var(--primary-border-color);
   border-radius: 5px;
+  border-width: 1px;
 }
 
 .postWrapper {
@@ -132,6 +133,7 @@ body.light {
   padding: 10px;
   border-radius: 5px;
   margin-bottom: 10px;
+  border-width: 1px;
 }
 
 .postCopy {
@@ -141,6 +143,7 @@ body.light {
   border-radius: 5px;
   padding: 8px;
   margin-bottom: 0px !important;
+  border-width: 1px;
 }
 
 .no-select {
