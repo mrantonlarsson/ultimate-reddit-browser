@@ -1,7 +1,7 @@
 export class UIManager {
   constructor(page, oldReddit) {
     this.page = page;
-    this.ratio = 0.6;
+    this.ratio = 0.5;
     this.resizing;
     this.dragging = false;
     this.timeoutId;
@@ -81,10 +81,10 @@ export class UIManager {
         if (result.newRatio >= 0.4 && result.newRatio <= 0.6) {
           this.ratio = result.newRatio;
         } else {
-          this.ratio = 0.4;
+          this.ratio = 0.5;
         }
       } else {
-        this.ratio = 0.4;
+        this.ratio = 0.5;
       }
     });
   }
