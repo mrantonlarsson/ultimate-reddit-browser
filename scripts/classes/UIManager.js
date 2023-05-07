@@ -24,13 +24,12 @@ export class UIManager {
     this.page.handle.classList.add("rcb-handle");
     this.page.handle.classList.add("smooth-transition");
     this.page.commentsWrapper.classList.add("commentsWrapper");
+    this.page.commentsWrapperContainer.classList.add("commentsWrapperContainer");
     this.page.postWrapper.classList.add("postWrapper");
 
     //this.page.handle.style.height = this.page.commentsContainer.style.height;
     //console.log(this.page.commentsContainer.style.height);
     this.page.handle.style.borderRadius = "5px";
-
-    this.page.commentsContainer.appendChild(this.page.closeButton);
 
     this.page.commentsContainer.style.display = "none";
     this.page.handle.style.display = "none";
@@ -43,6 +42,8 @@ export class UIManager {
     this.page.commentsContainer.style.flexDirection = "column";
 
     this.placeElements();
+
+    this.detectAndApplyTheme();
   }
 
   placeElements() {
@@ -53,7 +54,10 @@ export class UIManager {
     this.page.container.insertBefore(this.page.commentsContainer, this.page.container.children[2]);
 
     this.page.commentsContainer.appendChild(this.page.postWrapper);
-    this.page.commentsContainer.appendChild(this.page.commentsWrapper);
+    this.page.commentsContainer.appendChild(this.page.commentsWrapperContainer);
+    this.page.commentsContainer.appendChild(this.page.closeButton);
+
+    this.page.commentsWrapperContainer.appendChild(this.page.commentsWrapper);
   }
 
   updateContainerWidths() {
@@ -63,12 +67,13 @@ export class UIManager {
     newPostsWidth = Math.min(newPostsWidth, 0.6 * this.containerWidth);
     newPostsWidth = Math.max(newPostsWidth, 0.4 * this.containerWidth);
 
-    let newCommentsWidth = this.containerWidth - newPostsWidth;
+    let newCommentsWidth = this.containerWidth - newPostsWidth - 10;
 
     // Set the widths of the posts and comments elements
-    this.page.postsContainer.style.width = `${newPostsWidth - 5}px`;
-    this.page.commentsContainer.style.width = `${newCommentsWidth - 10}px`;
-    this.page.handle.style.right = `${newCommentsWidth - 5}px`;
+    this.page.postsContainer.style.width = `${newPostsWidth}px`;
+    this.page.commentsContainer.style.width = `${newCommentsWidth - 21}px`;
+
+    this.page.handle.style.transform = `translateX(${newPostsWidth}px)`;
   }
 
   saveNewRatio() {
@@ -227,7 +232,7 @@ export class UIManager {
 
     this.page.commentsContainer.style.top = `${containerTop}px`;
     this.page.handle.style.top = `${containerTop}px`;
-    this.page.closeButton.style.top = `${containerTop + 10}px`;
+    this.page.closeButton.style.top = `${containerTop + 30}px`;
   }
 
   detectAndApplyTheme() {

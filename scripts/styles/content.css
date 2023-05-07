@@ -54,16 +54,16 @@ body.light {
 }
 
 .commentsContainer {
-  right: 0;
+  right: 5px;
   position: fixed;
-  bottom: 0;
-  /* background-color: var(--secondary-color); */
+  bottom: 5px;
+  background-color: var(--primary-color);
   display: none;
-  /* border-radius: 5px; */
   z-index: 2;
-
-  /* border: solid; */
-  /* border-color: var(--secondary-border-color); */
+  border: 1px solid;
+  border-radius: 5px;
+  padding: 10px;
+  border-color: var(--primary-border-color);
 }
 
 .rcb-handle {
@@ -98,7 +98,7 @@ body.light {
 
 .bufferedPost:not(.activePost) {
   border-style: solid;
-  border-width: 0.5px;
+  border-width: 1px;
   border-color: var(--secondary-border-color);
   border-radius: 5px;
 }
@@ -118,17 +118,29 @@ body.light {
 }
 
 .commentsWrapper {
-  overflow-y: scroll;
-  height: 100%;
   border: solid;
+  position: absolute;
   background-color: var(--primary-color);
   border-color: var(--primary-border-color);
   border-radius: 5px;
   border-width: 1px;
+  bottom: 0px;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  overflow-y: scroll;
+}
+
+.commentsWrapperContainer {
+  border-radius: 5px;
+  height: 100%;
+  position: relative;
+  background-color: var(--primary-color);
 }
 
 .postWrapper {
   border-color: var(--primary-border-color) !important;
+  background-color: var(--primary-color);
   border: solid;
   padding: 10px;
   border-radius: 5px;

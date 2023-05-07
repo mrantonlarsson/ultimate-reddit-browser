@@ -49,10 +49,6 @@ export class KeyboardManager {
     if (currentPostIndex > 0) {
       this.currentPostId = this.page.posts[currentPostIndex - 1].id;
       this.updateSelectedPost();
-    } else if (currentPostIndex === 0) {
-      // Select the last post when you're at the first post
-      this.currentPostId = this.page.posts[this.page.posts.length - 1].id;
-      this.updateSelectedPost();
     }
   }
 

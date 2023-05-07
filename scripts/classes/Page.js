@@ -12,6 +12,7 @@ export const Page = {
 
   commentsContainer: document.createElement("div"),
   commentsWrapper: document.createElement("div"),
+  commentsWrapperContainer: document.createElement("div"),
   postWrapper: document.createElement("div"),
   loadingMessage: document.createElement("h2"),
   handle: document.createElement("div"),
@@ -74,10 +75,10 @@ export const Page = {
       if (70 - window.scrollY <= 70 && 70 - window.scrollY >= 5) {
         this.commentsContainer.style.top = `${70 - window.scrollY}px`;
         this.handle.style.top = `${70 - window.scrollY}px`;
-        this.closeButton.style.top = `${80 - window.scrollY}px`;
+        this.closeButton.style.top = `${100 - window.scrollY}px`;
       } else {
         this.commentsContainer.style.top = "5px";
-        this.closeButton.style.top = "15px";
+        this.closeButton.style.top = "35px";
       }
       // Get the .res-media-zoomable element
       if (this.currentPost) {
