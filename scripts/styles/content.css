@@ -5,6 +5,7 @@
   --secondary-dark-border-color: rgb(51, 51, 51);
   --tertiary-dark-color: rgb(18, 18, 18);
   --tertiary-dark-border-color: rgb(51, 51, 51);
+  --selected-dark-comment-button: rgb(255, 70, 1);
 
   --primary-light-color: rgb(253, 253, 255);
   --primary-light-border-color: rgb(230, 230, 230);
@@ -12,6 +13,7 @@
   --secondary-light-border-color: rgb(230, 230, 230);
   --tertiary-light-color: rgb(247, 247, 248);
   --tertiary-light-border-color: rgb(230, 230, 230);
+  --selected-light-comment-button: rgb(255, 70, 1);
 }
 
 body.dark {
@@ -21,6 +23,7 @@ body.dark {
   --secondary-border-color: var(--secondary-dark-border-color);
   --tertiary-color: var(--tertiary-dark-color);
   --tertiary-border-color: var(--tertiary-dark-border-color);
+  --selected-comment-button: var(--selected-dark-comment-button);
 }
 
 body.light {
@@ -30,6 +33,7 @@ body.light {
   --secondary-border-color: var(--secondary-light-border-color);
   --tertiary-color: var(--tertiary-light-color);
   --tertiary-border-color: var(--tertiary-light-border-color);
+  --selected-comment-button: var(--selected-light-comment-button);
 }
 
 .smooth-transition {
@@ -85,7 +89,7 @@ body.light {
 }
 
 .activeCommentButton {
-  color: white !important;
+  color: var(--selected-comment-button) !important;
 }
 
 .activePost {
