@@ -19,7 +19,6 @@ export class UIManager {
     this.page.loadingMessage.classList.add("urb-loadingMessage");
     this.page.closeButton.classList.add("urb-closeButton");
     this.page.postsContainer.classList.add("urb-postsContainer");
-    this.page.container.classList.add("urb-container");
     this.page.commentsContainer.classList.add("urb-commentsContainer");
     this.page.handle.classList.add("urb-handle");
     this.page.handle.classList.add("urb-smooth-transition");
@@ -58,6 +57,22 @@ export class UIManager {
     this.page.commentsContainer.appendChild(this.page.closeButton);
 
     this.page.commentsWrapperContainer.appendChild(this.page.commentsWrapper);
+
+    if (this.page.infobar) {
+      this.page.container.parentElement.insertBefore(this.page.infobar, this.page.container);
+      if (this.page.menuarea) {
+        this.page.container.parentElement.insertBefore(this.page.menuarea, this.page.infobar);
+      }
+    }
+
+    if (this.page.menuarea) {
+      this.page.container.parentElement.insertBefore(this.page.menuarea, this.page.container);
+    }
+
+    if (this.page.filterLine) {
+      this.page.container.parentElement.insertBefore(this.fpage.ilterLine, this.page.container);
+      this.page.filterLine.style.padding = "5px";
+    }
   }
 
   updateContainerWidths() {
@@ -71,6 +86,17 @@ export class UIManager {
 
     // Set the widths of the posts and comments elements
     this.page.postsContainer.style.width = `${newPostsWidth}px`;
+
+    if (this.page.menuarea) {
+      this.page.menuarea.style.width = `${newPostsWidth - 20}px`;
+    }
+    if (this.page.infobar) {
+      this.page.infobar.style.width = `${newPostsWidth}px`;
+    }
+    if (this.page.filterLine) {
+      this.page.filterLine.style.width = `${newPostsWidth - 20}px`;
+    }
+
     this.page.commentsContainer.style.width = `${newCommentsWidth - 21}px`;
 
     this.page.handle.style.transform = `translateX(${newPostsWidth}px)`;
@@ -100,34 +126,35 @@ export class UIManager {
     this.page.handle.style.display = "block";
     this.hideSidebar();
     this.page.commentsContainerToggle = true;
+    this.page.container.classList.add("urb-container");
   }
 
   hideSidebar() {
     this.page.sidebar.style.display = "none";
-    if (
-      this.page.menuarea?.style?.display !== null &&
-      this.page.container.contains(this.page.menuarea)
-    ) {
-      this.page.menuarea.style.display = "none";
-    }
   }
 
   hideComments() {
     this.page.commentsContainer.style.display = "none";
     this.page.handle.style.display = "none";
     this.page.postsContainer.style.width = "auto";
+    this.page.container.classList.remove("urb-container");
+
+    if (this.page.menuarea) {
+      this.page.menuarea.style.width = "auto";
+    }
+    if (this.page.infobar) {
+      this.page.infobar.style.width = "auto";
+    }
+    if (this.page.filterLine) {
+      this.page.filterLine.style.width = "auto";
+    }
+
     this.showSidebar();
     this.page.commentsContainerToggle = false;
   }
 
   showSidebar() {
     this.page.sidebar.style.display = "block";
-    if (
-      this.page.menuarea?.style?.display !== null &&
-      this.page.container.contains(this.page.menuarea)
-    ) {
-      this.page.menuarea.style.display = "block";
-    }
   }
 
   // Post-related
@@ -230,9 +257,9 @@ export class UIManager {
   setStyles() {
     const containerTop = this.page.container.getBoundingClientRect().top;
 
-    this.page.commentsContainer.style.top = `${containerTop}px`;
-    this.page.handle.style.top = `${containerTop}px`;
-    this.page.closeButton.style.top = `${containerTop + 30}px`;
+    this.page.commentsContainer.style.top = "70px";
+    this.page.handle.style.top = "70px";
+    this.page.closeButton.style.top = "100px";
   }
 
   detectAndApplyTheme() {

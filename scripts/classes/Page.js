@@ -23,6 +23,9 @@ export const Page = {
       this.container = document.querySelector('[role="main"]');
       this.postsContainer = document.querySelector(".sitetable.linklisting");
       this.sidebar = document.querySelector(".side");
+      this.menuarea = document.querySelector(".menuarea");
+      this.infobar = document.querySelector(".infobar.listingsignupbar");
+      this.filterLine = document.querySelector(".res-filterline");
     } else {
       this.container = document.querySelector(
         ".ListingLayout-outerContainer"
@@ -48,6 +51,7 @@ export const Page = {
     this.observePosts();
     this.observeComments();
     this.observeRESMedia();
+    this.observeRESFilterLine();
     this.observeRedditTheme();
 
     // Attach a mouse down event listener to the handle div
@@ -296,6 +300,35 @@ export const Page = {
     observer.observe(document.body, {
       attributes: true,
       attributeFilter: ["class"],
+    });
+  },
+  observeRESFilterLine: function () {
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.type === "childList") {
+          mutation.addedNodes.forEach((addedNode) => {
+            // Check if the addedNode is a .res-media-zoomable
+            if (
+              addedNode.nodeType === Node.ELEMENT_NODE &&
+              addedNode.classList.contains("res-filterline")
+            ) {
+              this.filterLine = addedNode;
+
+              this.container.parentElement.insertBefore(this.filterLine, this.container);
+              this.filterLine.style.padding = "5px";
+              if (this.commentsContainerToggle == true) {
+                this.uiManager.updateContainerWidths();
+              }
+            }
+          });
+        }
+      });
+    });
+
+    // Observe changes in the document body
+    observer.observe(this.container, {
+      childList: true,
+      subtree: true,
     });
   },
 };
