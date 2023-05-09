@@ -16,7 +16,7 @@
   --selected-light-comment-button: rgb(255, 70, 1);
 }
 
-body.dark {
+body.urb-dark {
   --primary-color: var(--primary-dark-color);
   --primary-border-color: var(--primary-dark-border-color);
   --secondary-color: var(--secondary-dark-color);
@@ -26,7 +26,7 @@ body.dark {
   --selected-comment-button: var(--selected-dark-comment-button);
 }
 
-body.light {
+body.urb-light {
   --primary-color: var(--primary-light-color);
   --primary-border-color: var(--primary-light-border-color);
   --secondary-color: var(--secondary-light-color);
@@ -36,28 +36,28 @@ body.light {
   --selected-comment-button: var(--selected-light-comment-button);
 }
 
-.smooth-transition {
+.urb-smooth-transition {
   transition: all 0.3s ease;
 }
-.loadingMessage {
+.urb-loadingMessage {
   padding: 15px;
   font-size: 15px;
 }
-.closeButton {
-  right: 30px;
+.urb-closeButton {
+  right: 35px;
   position: fixed;
   border-radius: 5px;
 }
-.postsContainer {
+.urb-postsContainer {
   display: block;
   order: -2;
 }
-.container {
+.urb-container {
   display: flex;
   flex-direction: row;
 }
 
-.commentsContainer {
+.urb-commentsContainer {
   right: 5px;
   position: fixed;
   bottom: 5px;
@@ -70,29 +70,29 @@ body.light {
   border-color: var(--primary-border-color);
 }
 
-.rcb-handle {
+.urb-handle {
   width: 10px;
   position: fixed;
   bottom: 5px;
   display: none;
   z-index: 3;
 }
-.rcb-handle:hover {
+.urb-handle:hover {
   cursor: ew-resize;
 }
 
-.white {
+.urb-white {
   background-color: var(--tertiary-color);
 }
-.black {
+.urb-black {
   background-color: var(--secondary-color);
 }
 
-.activeCommentButton {
+.urb-activeCommentButton {
   color: var(--selected-comment-button) !important;
 }
 
-.activePost {
+.urb-activePost {
   border-style: solid;
   border-width: 1px;
   border-color: var(--tertiary-border-color);
@@ -100,19 +100,19 @@ body.light {
   background-color: var(--tertiary-color) !important;
 }
 
-.bufferedPost:not(.activePost) {
+.urb-bufferedPost:not(.activePost) {
   border-style: solid;
   border-width: 1px;
   border-color: var(--secondary-border-color);
   border-radius: 5px;
 }
 
-.paddingStyle {
+.urb-paddingStyle {
   padding-top: 3px;
   padding-bottom: 3px;
 }
 
-.individualComment {
+.urb-individualComment {
   padding: 5px;
   margin: 5px;
   border-style: solid;
@@ -121,7 +121,7 @@ body.light {
   border-radius: 5px;
 }
 
-.commentsWrapper {
+.urb-commentsWrapper {
   border: solid;
   position: absolute;
   background-color: var(--primary-color);
@@ -135,14 +135,14 @@ body.light {
   overflow-y: scroll;
 }
 
-.commentsWrapperContainer {
+.urb-commentsWrapperContainer {
   border-radius: 5px;
   height: 100%;
   position: relative;
   background-color: var(--primary-color);
 }
 
-.postWrapper {
+.urb-postWrapper {
   border-color: var(--primary-border-color) !important;
   background-color: var(--primary-color);
   border: solid;
@@ -152,7 +152,7 @@ body.light {
   border-width: 1px;
 }
 
-.postCopy {
+.urb-postCopy {
   background-color: var(--tertiary-color) !important;
   border: solid;
   border-color: var(--tertiary-border-color);
@@ -162,7 +162,7 @@ body.light {
   border-width: 1px;
 }
 
-.no-select {
+.urb-no-select {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;

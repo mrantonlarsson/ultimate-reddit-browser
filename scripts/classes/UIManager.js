@@ -16,16 +16,16 @@ export class UIManager {
 
   // Page-related
   setupPage() {
-    this.page.loadingMessage.classList.add("loadingMessage");
-    this.page.closeButton.classList.add("closeButton");
-    this.page.postsContainer.classList.add("postsContainer");
-    this.page.container.classList.add("container");
-    this.page.commentsContainer.classList.add("commentsContainer");
-    this.page.handle.classList.add("rcb-handle");
-    this.page.handle.classList.add("smooth-transition");
-    this.page.commentsWrapper.classList.add("commentsWrapper");
-    this.page.commentsWrapperContainer.classList.add("commentsWrapperContainer");
-    this.page.postWrapper.classList.add("postWrapper");
+    this.page.loadingMessage.classList.add("urb-loadingMessage");
+    this.page.closeButton.classList.add("urb-closeButton");
+    this.page.postsContainer.classList.add("urb-postsContainer");
+    this.page.container.classList.add("urb-container");
+    this.page.commentsContainer.classList.add("urb-commentsContainer");
+    this.page.handle.classList.add("urb-handle");
+    this.page.handle.classList.add("urb-smooth-transition");
+    this.page.commentsWrapper.classList.add("urb-commentsWrapper");
+    this.page.commentsWrapperContainer.classList.add("urb-commentsWrapperContainer");
+    this.page.postWrapper.classList.add("urb-postWrapper");
 
     //this.page.handle.style.height = this.page.commentsContainer.style.height;
     //console.log(this.page.commentsContainer.style.height);
@@ -133,10 +133,10 @@ export class UIManager {
   // Post-related
   setupPost(post) {
     if (post.commentButton) {
-      post.commentButton.classList.add("smooth-transition");
+      post.commentButton.classList.add("urb-smooth-transition");
     }
 
-    post.element.classList.add("smooth-transition");
+    post.element.classList.add("urb-smooth-transition");
 
     this.page.commentsWrapper.appendChild(this.page.loadingMessage);
     this.page.loadingMessage.innerHTML = `Loading comments...`;
@@ -145,13 +145,13 @@ export class UIManager {
   toggleActivePost(post) {
     // If another comment has been hovered
     if (this?.page.lastPost !== null) {
-      this.page.lastPost.commentButton.classList.remove("activeCommentButton");
-      this.page.lastPost.element.classList.remove("activePost");
-      this.page.lastPost.element.classList.add("bufferedPost");
+      this.page.lastPost.commentButton.classList.remove("urb-activeCommentButton");
+      this.page.lastPost.element.classList.remove("urb-activePost");
+      this.page.lastPost.element.classList.add("urb-bufferedPost");
     }
-    post.element.classList.remove("bufferedPost");
-    post.commentButton.classList.add("activeCommentButton");
-    post.element.classList.add("activePost");
+    post.element.classList.remove("urb-bufferedPost");
+    post.commentButton.classList.add("urb-activeCommentButton");
+    post.element.classList.add("urb-activePost");
   }
 
   // CommentsContainer-related
@@ -159,11 +159,11 @@ export class UIManager {
     var comments = this.page.commentsContainer.querySelectorAll(".comment");
 
     comments.forEach((comment) => {
-      comment.classList.add("black");
+      comment.classList.add("urb-black");
     });
 
     comments.forEach((topComment) => {
-      topComment.classList.add("individualComment");
+      topComment.classList.add("urb-individualComment");
       let childThread = topComment.querySelector(".child");
 
       if (
@@ -174,9 +174,9 @@ export class UIManager {
 
         childComments.forEach((comment) => {
           if (comment.classList.contains("comment")) {
-            if (topComment.classList.contains("black")) {
-              comment.classList.add("white");
-              comment.classList.remove("black");
+            if (topComment.classList.contains("urb-black")) {
+              comment.classList.add("urb-white");
+              comment.classList.remove("urb-black");
             }
           }
         });
@@ -186,7 +186,7 @@ export class UIManager {
     var pElements = this.page.commentsContainer.getElementsByTagName("p");
 
     for (let i = 0; i < pElements.length; i++) {
-      pElements[i].classList.add("paddingStyle");
+      pElements[i].classList.add("urb-paddingStyle");
     }
   }
 
@@ -195,7 +195,7 @@ export class UIManager {
     if (postCopy.querySelector(".expando-button")) {
       postCopy.querySelector(".expando-button").remove();
     }
-    postCopy.classList.add("postCopy");
+    postCopy.classList.add("urb-postCopy");
   }
 
   displayLoadingMessage() {
@@ -250,7 +250,7 @@ export class UIManager {
   }
 
   applyTheme(darkTheme) {
-    document.body.classList.toggle("dark", darkTheme);
-    document.body.classList.toggle("light", !darkTheme);
+    document.body.classList.toggle("urb-dark", darkTheme);
+    document.body.classList.toggle("urb-light", !darkTheme);
   }
 }

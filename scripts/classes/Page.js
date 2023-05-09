@@ -55,7 +55,7 @@ export const Page = {
       // Set the resizing flag to true
       this.uiManager.resizing = true;
       this.uiManager.dragging = true;
-      document.body.classList.add("no-select");
+      document.body.classList.add("urb-no-select");
     });
 
     this.closeButton.addEventListener("click", (event) => {
@@ -68,7 +68,7 @@ export const Page = {
       this.uiManager.resizing = false;
       this.uiManager.dragging = false;
       this.uiManager.saveNewRatio();
-      document.body.classList.remove("no-select");
+      document.body.classList.remove("urb-no-select");
     });
 
     window.addEventListener("scroll", (event) => {

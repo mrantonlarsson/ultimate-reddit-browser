@@ -15,7 +15,7 @@
   },
   "content_scripts": [
     {
-      "matches": ["https://old.reddit.com/*", "https://www.reddit.com/*"],
+      "matches": ["https://old.reddit.com/*"],
       "js": ["content-script.js"],
       "css": ["scripts/styles/content.css"],
       "type": "module"
@@ -24,7 +24,7 @@
   "web_accessible_resources": [
     {
       "resources": ["scripts/*"],
-      "matches": ["https://old.reddit.com/*", "https://www.reddit.com/*"]
+      "matches": ["https://old.reddit.com/*"]
     }
   ],
   "icons": {
@@ -33,5 +33,5 @@
     "48": "icons/icon48.png",
     "128": "icons/icon128.png"
   },
-  "host_permissions": ["https://old.reddit.com/*", "https://www.reddit.com/*"]
+  "host_permissions": ["https://old.reddit.com/*"]
 }

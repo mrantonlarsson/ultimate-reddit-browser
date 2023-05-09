@@ -44,7 +44,7 @@ export class CommentsManager {
                 `.${this.post.element.classList[0]}`
               ).parentElement.lastChild;
             }
-            this.post.element.classList.add("bufferedPost");
+            this.post.element.classList.add("urb-bufferedPost");
 
             const commentsElement = doc.querySelector(".sitetable.nestedlisting");
 
