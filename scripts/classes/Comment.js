@@ -9,10 +9,12 @@ export class Comment {
 
   select() {
     this.isSelected = true;
+    this.element.style.borderColor = "white";
   }
 
   unselect() {
     this.isSelected = false;
+    this.element.style.borderColor = "";
   }
 
   toggleExpandComment() {

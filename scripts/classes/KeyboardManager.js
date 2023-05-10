@@ -93,16 +93,19 @@ export class KeyboardManager {
 
   selectPreviousComment() {
     const currentPost = this.page.posts.find((post) => post.id === this.currentPostId);
-    const commentThread = currentPost.commentsManager.comments;
+    const commentThread = currentPost.commentsManager;
 
     if (this.currentCommentIndex === 1) {
       this.currentCommentIndex--;
+      commentThread.unselectAllComments();
       this.page.commentsWrapper.scrollTo({ top: top, behavior: "smooth" });
     } else if (this.currentCommentIndex > 0) {
       this.currentCommentIndex--;
       this.updateSelectedComment();
       // commentThread[this.currentCommentIndex - 1].toggleExpandComment();
-      this.page.uiManager.scrollToComment(commentThread[this.currentCommentIndex - 1]);
+      this.page.uiManager.scrollToComment(commentThread.comments[this.currentCommentIndex - 1]);
+      commentThread.unselectAllComments();
+      commentThread.comments[this.currentCommentIndex - 1].select();
     }
   }
 
