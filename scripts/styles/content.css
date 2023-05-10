@@ -6,6 +6,7 @@
   --tertiary-dark-color: rgb(18, 18, 18);
   --tertiary-dark-border-color: rgb(51, 51, 51);
   --selected-dark-comment-button: rgb(255, 70, 1);
+  --selected-dark-element-border-color: rgb(102, 102, 102);
 
   --primary-light-color: rgb(253, 253, 255);
   --primary-light-border-color: rgb(230, 230, 230);
@@ -14,6 +15,7 @@
   --tertiary-light-color: rgb(247, 247, 248);
   --tertiary-light-border-color: rgb(230, 230, 230);
   --selected-light-comment-button: rgb(255, 70, 1);
+  --selected-light-element-border-color: rgb(102, 102, 102);
 }
 
 body.urb-dark {
@@ -24,6 +26,7 @@ body.urb-dark {
   --tertiary-color: var(--tertiary-dark-color);
   --tertiary-border-color: var(--tertiary-dark-border-color);
   --selected-comment-button: var(--selected-dark-comment-button);
+  --selected-element-border-color: var(--selected-dark-element-border-color);
 }
 
 body.urb-light {
@@ -34,6 +37,7 @@ body.urb-light {
   --tertiary-color: var(--tertiary-light-color);
   --tertiary-border-color: var(--tertiary-light-border-color);
   --selected-comment-button: var(--selected-light-comment-button);
+  --selected-element-border-color: var(--selected-light-element-border-color);
 }
 
 .urb-smooth-transition {
@@ -95,7 +99,7 @@ body.urb-light {
 .urb-activePost {
   border-style: solid;
   border-width: 1px;
-  border-color: var(--tertiary-border-color);
+  border-color: var(--selected-element-border-color);
   border-radius: 5px;
   background-color: var(--tertiary-color) !important;
 }

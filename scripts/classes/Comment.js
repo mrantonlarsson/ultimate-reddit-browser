@@ -9,7 +9,7 @@ export class Comment {
 
   select() {
     this.isSelected = true;
-    this.element.style.borderColor = "white";
+    this.element.style.borderColor = "var(--selected-element-border-color)";
   }
 
   unselect() {
