@@ -315,7 +315,9 @@ export const Page = {
               this.filterLine = addedNode;
 
               this.container.parentElement.insertBefore(this.filterLine, this.container);
-              this.filterLine.style.padding = "5px";
+              this.page.filterLine.style.padding = "5px";
+              this.page.filterLine.style.marginLeft = "22px";
+              this.page.filterLine.style.paddingLeft = "3px";
               if (this.commentsContainerToggle == true) {
                 this.uiManager.updateContainerWidths();
               }

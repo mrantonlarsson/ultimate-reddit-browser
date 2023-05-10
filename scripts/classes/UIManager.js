@@ -67,11 +67,14 @@ export class UIManager {
 
     if (this.page.menuarea) {
       this.page.container.parentElement.insertBefore(this.page.menuarea, this.page.container);
+      this.page.menuarea.style.marginLeft = "16px";
     }
 
     if (this.page.filterLine) {
-      this.page.container.parentElement.insertBefore(this.fpage.ilterLine, this.page.container);
+      this.page.container.parentElement.insertBefore(this.page.filterLine, this.page.container);
       this.page.filterLine.style.padding = "5px";
+      this.page.filterLine.style.marginLeft = "22px";
+      this.page.filterLine.style.paddingLeft = "3px";
     }
   }
 
