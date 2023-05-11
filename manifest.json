@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Ultimate Reddit Browser",
-  "version": "0.0.0.1",
+  "version": "0.0.0.3",
   "incognito": "spanning",
   "permissions": ["storage"],
   "description": "Effortlessly browse Reddit! Auto-load comments & navigate posts with your keyboard. Enhance your experience, no new tabs needed!",
